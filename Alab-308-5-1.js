@@ -1,20 +1,20 @@
 //returns the sum of an array of numbers
-function arraySum(x) {
+function arraySum(numberArray) {
     let sum = 0;
-    for (let i = 0; i < x.length; i++) {
+    for (let i = 0; i < numberArray.length; i++) {
 
-        sum += Number(x[i]);
+        sum += Number(numberArray[i]);
     }
     return sum;
 }
 
 // returns the average of an array of numbers
-function arrayAverage(x) {
+function arrayAverage(numArr) {
     let sum = 0;
     let count = 0;
-    for (let i = 0; i < x.length; i++) {
+    for (let i = 0; i < numArr.length; i++) {
 
-        sum += (x[i]);
+        sum += (numArr[i]);
         count++
     }
     let average = sum / count;
@@ -22,24 +22,24 @@ function arrayAverage(x) {
 }
 
 //returns the longest string in an array
-function arrayLongestString(x) {
+function arrayLongestString(strArr) {
     let bigString = ``;
-    for (let i = 0; i < x.length; i++) {
+    for (let i = 0; i < strArr.length; i++) {
 
-        if (bigString.length < x[i].length) {
-            bigString = x[i];
+        if (bigString.length < strArr[i].length) {
+            bigString = strArr[i];
         }
     }
     return bigString
 }
 
 //returns strings larger than given number
-function arrayStringsLongerThan(x, y) {
+function arrayStringsLongerThan(strArr, num) {
     let stringRuler = [];
-    for (let i = 0; i < x.length; i++) {
+    for (let i = 0; i < strArr.length; i++) {
 
-        if (x[i].length > y) {
-            stringRuler.push(x[i])
+        if (strArr[i].length > num) {
+            stringRuler.push(strArr[i])
         }
     }
     return stringRuler
@@ -102,14 +102,12 @@ function arrayAdjustment(array, maxAge) {
         };
     });
 
-
     // Return the sorted and filtered array
     return updatedArray;
 }
 
-
 //New Array filited by arrayAdjustment Function
-var dataSorted = arrayAdjustment(data, 50);
+const dataSorted = arrayAdjustment(data, 50);
 console.log(dataSorted);
 
 
@@ -128,3 +126,31 @@ console.log("The average age is ", (totalAge/dataSorted.length));
 
 
 console.log("=================Question 3=====================");
+
+//Function to increment the age field of an Object
+function incrementAge(objects) {
+    objects.forEach(obj => {
+      if (typeof obj.age !== 'number') {
+        obj.age = 0;
+      }
+      obj.age += 1;
+      obj.updated_at = new Date();
+    });
+    return objects;
+  }
+
+console.log(incrementAge(dataSorted));
+
+console.log("=====================Question:3 Part:2 =================");
+// Function to make a copy of an object
+function incrementAgeCopy(obj) {
+    const copy = { ...obj };
+  
+    if (typeof copy.age !== 'number') {
+      copy.age = 0;
+    }
+    copy.age += 1;
+    copy.updated_at = new Date();
+    return copy;
+  }
+  console.log(incrementAgeCopy(dataSorted));
